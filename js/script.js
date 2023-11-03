@@ -1,7 +1,52 @@
+const menu = document.querySelector(".options__menu");
+const caret = document.querySelector(".options__caret");
+const dropdownParent = document.querySelector(".options__select");
+const modalOverlay = document.querySelector(".modal-overlay");
+
+// dropdown difficulty menu
+function toggleDropdown() {
+  menu.classList.toggle("--active");
+  caret.classList.toggle("--rotate");
+}
+
+function closeDropdown() {
+  menu.classList.remove("--active");
+  caret.classList.toggle("--rotate");
+}
+
+function closeModal(){
+  modalOverlay.classList.remove('--active')
+}
+// needs to have a way to prevent clicking into squares when open to prevent unintended moves
+// may choose to do this on the square logic but still need to stop hover effects
+dropdownParent.addEventListener("click", function (event) {
+  event.stopPropagation();
+  toggleDropdown();
+  if(menu.classList.contains('--active')){
+    modalOverlay.classList.add('--active'); // add overlay to stop clicks on game tiles
+  } else { closeModal()}
+});
+
+
+
+// Close the dropdown when clicking outside of it
+window.addEventListener("click", function (event) {
+  if (modalOverlay.contains(event.target) && menu.classList.contains("--active")) {
+    closeDropdown();
+    closeModal();
+  }
+});
+
 // Tic-Tac-Toe game board represented as an array
 let board = [" ", " ", " ", " ", " ", " ", " ", " ", " "];
 
 //players
+function Player(name, symbol, score) {
+  this.name = name;
+  this.symbol = symbol;
+  this.score = score;
+}
+
 const humanPlayer = "X";
 const aiPlayer = "O";
 
@@ -49,7 +94,7 @@ const gameStateModule = () => {
   return { newGame, displayBoard, checkTie, checkWinner };
 };
 
-// AI movement module makeAImove() & Min-Max algorithm (no alpha beta pruning or depth) 
+// AI movement module makeAImove() & Min-Max algorithm (no alpha beta pruning or depth)
 const aiMovementModule = () => {
   function makeAIMove() {
     let _bestScore = -Infinity;
@@ -144,12 +189,3 @@ const humanMovementModule = () => {
   }
   return { humanMove };
 };
-
-
-
-
-
-//      to do list
-//single player & multi player -> player names (use a factory function for object creation)
-// ai settings  easy/medium/unbeatable
-// UI 

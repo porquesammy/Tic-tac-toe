@@ -14,7 +14,6 @@ body {
   width: 80%;
   margin: 1rem auto;
 }
-
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -116,29 +115,29 @@ body {
   padding: 0;
   display: none;
   outline: none;
-}
-.options__menu li {
-  padding-left: 8px;
-  width: 110px;
-}
-.options__menu li:hover {
-  font-size: 105%;
-  background-color: #263450;
-}
-.options__menu li:focus {
-  background-color: #263450;
-}
-.options__menu li:focus-within {
-  background-color: transparent;
+  & li {
+    padding-left: 8px;
+    width: 110px;
+    &:hover {
+      font-size: 105%;
+      background-color: #263450;
+    }
+    &:focus {
+      background-color: #263450;
+    }
+    &:focus-within {
+      background-color: transparent;
+    }
+  }
 }
 
 .new-game {
   text-align: center;
   margin: 1rem 0 0 0;
-}
-.new-game :hover {
-  color: rgba(90, 192, 30, 0.705);
-  font-size: 105%;
+  & :hover {
+    color: rgba(90, 192, 30, 0.705);
+    font-size: 105%;
+  }
 }
 
 .new-game__btn {
@@ -157,7 +156,6 @@ a {
   text-decoration: none;
   color: aliceblue;
 }
-
 .--active {
   display: block;
 }
@@ -169,7 +167,10 @@ a {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 3vh;
-  grid-template-areas: "zero one two" "three four five" "six seven eight";
+  grid-template-areas:
+    "zero one two"
+    "three four five"
+    "six seven eight";
 }
 
 .gameGridContainer__square {
@@ -197,35 +198,27 @@ a {
 #zero {
   grid-area: zero;
 }
-
 #one {
   grid-area: one;
 }
-
 #two {
   grid-area: two;
 }
-
 #three {
   grid-area: three;
 }
-
 #four {
   grid-area: four;
 }
-
 #five {
   grid-area: five;
 }
-
 #six {
   grid-area: six;
 }
-
 #seven {
   grid-area: seven;
 }
-
 #eight {
   grid-area: eight;
 }
@@ -235,6 +228,7 @@ a {
     font-size: 20vh;
   }
 }
+
 @media (max-width: 330px) {
   .options__score-wrapper {
     position: relative;
@@ -250,5 +244,3 @@ a {
     left: -30vw;
   }
 }
-
-/*# sourceMappingURL=style.css.map */

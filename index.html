@@ -5,30 +5,73 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tic Tac Toe</title>
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Coiny&display=swap"
+      rel="stylesheet"
+    />
+    <script src="./js/script.js" defer></script>
+
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <div class="container">
-      <button class="btn" id="options"></button>
-      <div class="hidden" id="modal">
-          <p> Single player / Two players</p>
-          <p> Player one: name</p>
-          <p> Player two: name</p>
-          <p> AI difficulty: Easy/Medium/Unbeatable</p>
-          
+    <!-- overlay to prevent miss-clicking game board  -->
+    <div class="modal-overlay"></div>
+    <div class="options">
+      <div class="options__difficultySettings">
+        <ul class="options__dropdown">
+          <div class="options__select">
+            <a href="#" data-selected>Easy</a>
+            <div class="options__caret"></div>
+          </div>
+          <ul class="options__menu">
+            <li><a href="#">Medium</a></li>
+            <li><a href="#">Hard</a></li>
+            <li><a href="#">Impossible</a></li>
+          </ul>
+        </ul>
       </div>
-      <div class="game_board" id="one"></div>
-      <div class="game_board" id="two"></div>
-      <div class="game_board" id="three"></div>
-      <div class="game_board" id="four"></div>
-      <div class="game_board" id="five"></div>
-      <div class="game_board" id="six"></div>
-      <div class="game_board" id="seven"></div>
-      <div class="game_board" id="eight"></div>
-      <div class="game_board" id="nine"></div>
-      <h2 id="game_text">Beep Boop Beep. CPU Wins!!</h2>
-      <button class="btn" id="new_game"></button>
+      <div class="options__score-wrapper">
+        
+        <div class="options__x-score">X: <span data-x-score>0</span></div>
+        <div class="options__o-score">O: <span data-o-score>0</span></div>
+      </div>
     </div>
-    <script src="./js/script.js"></script>
+    <div class="gameGridContainer">
+      <div class="gameGridContainer__square" id="zero">
+        <span data-square-0>x</span>
+      </div>
+      <div class="gameGridContainer__square" id="one">
+        <span data-square-1>o</span>
+      </div>
+      <div class="gameGridContainer__square" id="one">
+        <span data-square-1>o</span>
+      </div>
+      <div class="gameGridContainer__square" id="two">
+        <span data-square-2>o</span>
+      </div>
+      <div class="gameGridContainer__square" id="three">
+        <span data-square-3>o</span>
+      </div>
+      <div class="gameGridContainer__square" id="four">
+        <span data-square-4>x</span>
+      </div>
+      <div class="gameGridContainer__square" id="five">
+        <span data-square-5>x</span>
+      </div>
+      <div class="gameGridContainer__square" id="six">
+        <span data-square-6>x</span>
+      </div>
+      <div class="gameGridContainer__square" id="seven">
+        <span data-square-7>o</span>
+      </div>
+      <div class="gameGridContainer__square" id="eight">
+        <span data-square-8>o</span>
+      </div>
+    </div>
+    <div class="new-game">
+      <button class="new-game__btn">New Game</button>
+    </div>
   </body>
 </html>
