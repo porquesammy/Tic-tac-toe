@@ -1,5 +1,12 @@
+@font-face {
+  font-family: "Coiny";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("src/fonts/coiny.woff2") format("woff2");
+}
 :root {
-  --font-family: "coiny", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  --font-family: "Coiny", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
 }
 
 *,
