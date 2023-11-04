@@ -3,7 +3,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("../fonts/coiny.woff2") format("woff2");
+  src: local("Coiny"), url("../fonts/coiny.woff2") format("woff2"), url("https://fonts.googleapis.com/css2?family=Coiny&display=swap");
 }
 :root {
   --font-family: "Coiny", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
