@@ -1,8 +1,9 @@
 <svg width="80%" height="80%" viewBox="0 0 80 74" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_dd_132_5)">
-<text fill="#075985" xml:space="preserve" style="white-space: pre" font-family="Coiny" font-size="120" letter-spacing="0em"><tspan x="2" y="68">o</tspan></text>
+<text fill="#075985" xml:space="preserve" style="white-space: pre" font-family= "Coiny" font-size="120" letter-spacing="0em"><tspan x="2" y="68">o</tspan></text>
 </g>
 <defs>
+<style typse="text/css"> @import url('https://fonts.gstatic.com/s/coiny/v16/gyByhwU1K989PUwKGFWNOITddY4.woff2');</style>
 <filter id="filter0_dd_132_5" x="-2.383" y="1.048" width="82.912" height="74.848" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
