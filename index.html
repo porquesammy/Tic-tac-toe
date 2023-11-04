@@ -22,56 +22,52 @@
       <div class="options__difficultySettings">
         <ul class="options__dropdown">
           <div class="options__select">
-            <a href="#" data-selected>Easy</a>
+            <a href="#" data-selected draggable="false">Easy</a>
             <div class="options__caret"></div>
           </div>
           <ul class="options__menu">
-            <li><a href="#">Medium</a></li>
-            <li><a href="#">Hard</a></li>
-            <li><a href="#">Impossible</a></li>
+            <li><a href="#" draggable="false">Medium</a></li>
+            <li><a href="#" draggable="false">Hard</a></li>
+            <li><a href="#" draggable="false">Impossible</a></li>
           </ul>
         </ul>
       </div>
-      <div class="options__score-wrapper">
-        
-        <div class="options__x-score">X: <span data-x-score>0</span></div>
-        <div class="options__o-score">O: <span data-o-score>0</span></div>
-      </div>
+    </div>
+    <div class="score-wrapper">
+      <div class="score-wrapper__x-score">X: <span data-x-score>0</span></div>
+      <div class="score-wrapper__o-score">O: <span data-o-score>0</span></div>
     </div>
     <div class="gameGridContainer">
-      <div class="gameGridContainer__square" id="zero">
-        <span data-square-0>x</span>
+      <div class="gameGridContainer__square" id="zero" data-square-0>
+        <img src="/src/svg/o.svg" alt="o" draggable="false" />
       </div>
-      <div class="gameGridContainer__square" id="one">
-        <span data-square-1>o</span>
+      <div class="gameGridContainer__square" id="one" data-square-1>
+        <img src="/src/svg/x.svg" alt="x" draggable="false"/>
       </div>
-      <div class="gameGridContainer__square" id="one">
-        <span data-square-1>o</span>
+      <div class="gameGridContainer__square" id="two" data-square-2>
+        <img src="/src/svg/o.svg" alt="o" draggable="false"/>
       </div>
-      <div class="gameGridContainer__square" id="two">
-        <span data-square-2>o</span>
+      <div class="gameGridContainer__square" id="three" data-square-3>
+        <img src="/src/svg/o.svg" alt="o" draggable="false"/>
       </div>
-      <div class="gameGridContainer__square" id="three">
-        <span data-square-3>o</span>
+      <div class="gameGridContainer__square" id="four" data-square-4>
+        <img src="/src/svg/x.svg" alt="x" draggable="false"/>
       </div>
-      <div class="gameGridContainer__square" id="four">
-        <span data-square-4>x</span>
+      <div class="gameGridContainer__square" id="five" data-square-5>
+        <img src="/src/svg/x.svg" alt="x" draggable="false" />
       </div>
-      <div class="gameGridContainer__square" id="five">
-        <span data-square-5>x</span>
+      <div class="gameGridContainer__square" id="six" data-square-6>
+        <img src="/src/svg/x.svg" alt="x" draggable="false"/>
       </div>
-      <div class="gameGridContainer__square" id="six">
-        <span data-square-6>x</span>
+      <div class="gameGridContainer__square" id="seven" data-square-7>
+        <img src="/src/svg/o.svg" alt="o" draggable="false"/>
       </div>
-      <div class="gameGridContainer__square" id="seven">
-        <span data-square-7>o</span>
-      </div>
-      <div class="gameGridContainer__square" id="eight">
-        <span data-square-8>o</span>
+      <div class="gameGridContainer__square" id="eight" data-square-8>
+        <img src="/src/svg/o.svg" alt="o" draggable="false"/>
       </div>
     </div>
-    <div class="new-game">
-      <button class="new-game__btn">New Game</button>
+    <div class="restart-game">
+      <button class="restart-game__btn">Restart Game</button>
     </div>
   </body>
 </html>
