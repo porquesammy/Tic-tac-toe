@@ -3,8 +3,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local("Coiny"), url("../src/fonts/Coiny.ttf") format("ttf"), url("../src/fonts/Coiny.woff") format("woff"), url("../src/fonts/Coiny.woff2") format("woff2"),
-  url("https://fonts.googleapis.com/css2?family=Coiny&display=swap");
+  src: local("Coiny"), url("src/fonts/coiny-regular-webfont.woff") format("woff"), url("src/fonts/coiny-regular-webfont.woff2") format("woff2");
 }
 
 :root {
