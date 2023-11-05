@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tic Tac Toe</title>
-    <script src="./js/script.js" defer></script>
+    <script type="module" src="./js/ui-module.js" defer></script>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
@@ -31,32 +31,86 @@
       <div class="score-wrapper__o-score">O: <span data-o-score>0</span></div>
     </div>
     <div class="gameGridContainer">
-      <div class="gameGridContainer__square" id="zero" data-square-0>
-        <img src="src/svg/o.svg" alt="o" draggable="false" />
+      <div class="gameGridContainer__square" id="zero" data-square="0">
+        <!-- square 0 -->
+        <img
+          src="src/svg/empty.svg"
+          alt="empty"
+          draggable="false"
+          data="empty"
+        />
       </div>
-      <div class="gameGridContainer__square" id="one" data-square-1>
-        <img src="src/svg/x.svg" alt="x" draggable="false" />
+      <div class="gameGridContainer__square" id="one" data-square="1">
+        <!-- square 1 -->
+        <img
+          src="src/svg/empty.svg"
+          alt="empty"
+          draggable="false"
+          data="empty"
+        />
       </div>
-      <div class="gameGridContainer__square" id="two" data-square-2>
-        <img src="src/svg/o.svg" alt="o" draggable="false" />
+      <div class="gameGridContainer__square" id="two" data-square="2">
+        <!-- square 2 -->
+        <img
+          src="src/svg/empty.svg"
+          alt="empty"
+          draggable="false"
+          data="empty"
+        />
       </div>
-      <div class="gameGridContainer__square" id="three" data-square-3>
-        <img src="src/svg/o.svg" alt="o" draggable="false" />
+      <div class="gameGridContainer__square" id="three" data-square="3">
+        <!-- square 3 -->
+        <img
+          src="src/svg/empty.svg"
+          alt="empty"
+          draggable="false"
+          data="empty"
+        />
       </div>
-      <div class="gameGridContainer__square" id="four" data-square-4>
-        <img src="src/svg/x.svg" alt="x" draggable="false" />
+      <div class="gameGridContainer__square" id="four" data-square="4">
+        <!-- square 4 -->
+        <img
+          src="src/svg/empty.svg"
+          alt="empty"
+          draggable="false"
+          data="empty"
+        />
       </div>
-      <div class="gameGridContainer__square" id="five" data-square-5>
-        <img src="src/svg/x.svg" alt="x" draggable="false" />
+      <div class="gameGridContainer__square" id="five" data-square="5">
+        <!-- square 5 -->
+        <img
+          src="src/svg/empty.svg"
+          alt="empty"
+          draggable="false"
+          data="empty"
+        />
       </div>
-      <div class="gameGridContainer__square" id="six" data-square-6>
-        <img src="src/svg/x.svg" alt="x" draggable="false" />
+      <div class="gameGridContainer__square" id="six" data-square="6">
+        <!-- square 6 -->
+        <img
+          src="src/svg/empty.svg"
+          alt="empty"
+          draggable="false"
+          data="empty"
+        />
       </div>
-      <div class="gameGridContainer__square" id="seven" data-square-7>
-        <img src="src/svg/o.svg" alt="o" draggable="false" />
+      <div class="gameGridContainer__square" id="seven" data-square="7">
+        <!-- square 7 -->
+        <img
+          src="src/svg/empty.svg"
+          alt="empty"
+          draggable="false"
+          data="empty"
+        />
       </div>
-      <div class="gameGridContainer__square" id="eight" data-square-8>
-        <img src="src/svg/o.svg" alt="o" draggable="false" />
+      <div class="gameGridContainer__square" id="eight" data-square="8">
+        <!-- square 8 -->
+        <img
+          src="src/svg/empty.svg"
+          alt="empty"
+          draggable="false"
+          data="empty"
+        />
       </div>
     </div>
     <div class="restart-game">
