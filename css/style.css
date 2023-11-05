@@ -3,10 +3,10 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local("Coiny"), url("../fonts/coiny.woff2") format("woff2"), url("https://fonts.googleapis.com/css2?family=Coiny&display=swap");
+  src: local("Coiny"), url("../src/fonts/Coiny.ttf") format("ttf"), url("../src/fonts/Coiny.woff") format("woff"), url("../src/fonts/Coiny.woff2") format("woff2"), url("https://fonts.googleapis.com/css2?family=Coiny&display=swap");
 }
 :root {
-  --font-family: "Coiny", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  --font-family: "Coiny", "Gill Sans", "Gill Sans MT", "Calibri", "sans-serif";
 }
 
 *,
@@ -164,7 +164,6 @@ a {
 
 .gameGridContainer__square img {
   user-select: none;
-  font-family: var(--font-family);
 }
 
 .gameGridContainer__square:hover {
