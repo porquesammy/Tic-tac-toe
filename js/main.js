@@ -1,26 +1,20 @@
+import { humanMove } from "/js/player-movement-module.js";
+import { makeCpuMove } from "/js/cpu-movement-module.js";
 import {
   board,
+  ImgElementCreator,
   humanPlayer,
   cpuPlayer,
-  cpuMovementModule,
-  humanMovementModule,
-  gameStateModule,
-  square0,
-  square1,
-  square2,
-  square3,
-  square4,
-  square5,
-  square6,
-  square7,
-  square8,
-  boardHtmlElements
-} from "/js/game-module.js";
-// ui module
+  checkWinner,
+  checkTie,
+  newGame,
+} from "/js/game-state-module.js";
+
 const menu = document.querySelector(".options__menu");
 const caret = document.querySelector(".options__caret");
 const dropdownParent = document.querySelector(".options__select");
 const modalOverlay = document.querySelector(".modal-overlay");
+const restartGameBtn = document.querySelector(".restart-game__btn");
 
 // dropdown difficulty menu
 function toggleDropdown() {
@@ -56,4 +50,10 @@ window.addEventListener("click", function (event) {
     closeDropdown();
     closeModal();
   }
+});
+
+// gameStateModule.newGame()
+
+restartGameBtn.addEventListener("click", () => {
+  newGame();
 });
