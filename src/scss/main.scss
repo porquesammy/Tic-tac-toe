@@ -3,7 +3,9 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local("Coiny"), url("src/fonts/coiny-regular-webfont.woff") format("woff"), url("src/fonts/coiny-regular-webfont.woff2") format("woff2");
+  src: local("Coiny"),
+    url("src/fonts/coiny-regular-webfont.woff") format("woff"),
+    url("src/fonts/coiny-regular-webfont.woff2") format("woff2");
 }
 
 :root {
@@ -103,16 +105,14 @@ body {
   & li {
     padding-left: 8px;
     width: 110px;
-    &:hover {
+    &:hover, a:hover{
       font-size: 105%;
       background-color: #263450;
     }
-    &:focus {
+    &:focus { 
       background-color: #263450;
     }
-    &:focus-within {
-      background-color: transparent;
-    }
+
   }
 }
 

@@ -104,15 +104,12 @@ body {
   padding-left: 8px;
   width: 110px;
 }
-.options__menu li:hover {
+.options__menu li:hover, .options__menu li a:hover {
   font-size: 105%;
   background-color: #263450;
 }
 .options__menu li:focus {
   background-color: #263450;
-}
-.options__menu li:focus-within {
-  background-color: transparent;
 }
 
 a {
