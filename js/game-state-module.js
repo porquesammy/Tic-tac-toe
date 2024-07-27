@@ -1,19 +1,11 @@
-import { addPlayerMove } from "./main.js";
+import { addPlayerMove, ImgElementCreator } from "./main.js";
+import { setTurns,
+} from "./setTurns.js";
+import {changePlayerSymbols} from "./setTurns.js";
 // Tic-Tac-Toe game board represented as an array
 export let board = [" ", " ", " ", " ", " ", " ", " ", " ", " "];
 
-// symbols available are x, o, empty
-export function ImgElementCreator(symbol) {
-  let imgEl = document.createElement("img");
-  imgEl.setAttribute("src", `src/svg/${symbol}.svg`);
-  imgEl.setAttribute("alt", `${symbol}`);
-  imgEl.setAttribute("draggable", "false");
-  imgEl.setAttribute("data", `${symbol}`);
-  imgEl.setAttribute("data-img", "gameBoardSquare");
-  return imgEl;
-}
-
-//players
+//player Constructor to create and handle player state
 function Player(name, symbol) {
   this.name = name;
   this.symbol = symbol;
@@ -63,7 +55,8 @@ export function checkTie() {
 }
 
 export function newGame() {
-  board = [" ", " ", " ", " ", " ", " ", " ", " ", " "];
+  board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]; //clear board
+  //clear all game symbol images from divs
   let _gridContainer = document.querySelector('[data="game-grid-container"]');
   for (let index = 0; index <= _gridContainer.children.length - 1; index++) {
     _gridContainer
@@ -73,7 +66,8 @@ export function newGame() {
       .querySelectorAll('[data-img="gameBoardSquare"]')
       [index].addEventListener("click", addPlayerMove);
   }
-  humanPlayer.turn = true;
-  cpuPlayer.turn = false;
+  setTurns();
   addPlayerMove();
 }
+
+

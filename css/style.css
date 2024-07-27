@@ -104,7 +104,8 @@ body {
   padding-left: 8px;
   width: 110px;
 }
-.options__menu li:hover, .options__menu li a:hover {
+.options__menu li:hover,
+.options__menu li a:hover {
   font-size: 105%;
   background-color: #263450;
 }
@@ -163,10 +164,20 @@ a {
   user-select: none;
 }
 
+/* if humanPlayer.symbol is "x" */
+.--humanPlayerSymbol-x .gameGridContainer__square img[data=empty]:hover {
+  background-image: url("../src/svg/x.svg");
+}
+
+/* if humanPlayer.symbol is "o" */
+.--humanPlayerSymbol-o .gameGridContainer__square img[data=empty]:hover {
+  background-image: url("../src/svg/o.svg");
+}
+
 .gameGridContainer__square:hover {
   cursor: pointer;
-  background-color: rgb(73, 95, 120);
   transition: 0.35s ease-in;
+  background-color: rgb(73, 95, 120);
 }
 
 #zero {

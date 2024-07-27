@@ -1,13 +1,14 @@
 import { makeCpuMove } from "/js/cpu-movement-module.js";
 import {
   board,
-  ImgElementCreator,
   humanPlayer,
   cpuPlayer,
   checkWinner,
   checkTie,
   newGame,
 } from "/js/game-state-module.js";
+import {
+  changePlayerSymbols} from "./setTurns.js";
 
 const menu = document.querySelector("[data='options-menu']");
 const caret = document.querySelector("[data='options-caret']");
@@ -58,35 +59,28 @@ window.addEventListener("click", function (event) {
   }
 });
 
-export const mouseEnterPreview = function (event) {
-  if (event.target.alt === "empty") {
-    let hoveredSquare = event.target.parentNode.dataset.square;
-    event.target.replaceWith(ImgElementCreator(humanPlayer.symbol));
-    let gridSquareImgs = document.querySelectorAll(
-      '[data-img="gameBoardSquare"'
-    );
-    gridSquareImgs[hoveredSquare].addEventListener("click", playerMove);
-    gridSquareImgs[hoveredSquare].addEventListener("mouseleave", function () {
-      gridSquareImgs[hoveredSquare].replaceWith(ImgElementCreator("empty"));
-      addMouseEnterListener();
-      gridSquareImgs[hoveredSquare].addEventListener("click", playerMove);
-    });
-  }
-};
 
-// onmouseover change svg to "x" if the img is "empty.svg"
-const addMouseEnterListener = function () {
-  let gridSquareImgs = document.querySelectorAll('[data="empty"');
-  gridSquareImgs.forEach(function (squareImg) {
-    if (squareImg.alt === "empty") {
-      squareImg.addEventListener("mouseenter", mouseEnterPreview);
-    }
-  });
-};
+// //clear preview symbols periodically --bug fix
+// setInterval(() => {
+//   cells.forEach(cell => {
+//  // search for added hover state? possibly with time created
+//     }
+//   });
+// }, 500);
+
+// symbols available are x, o, empty
+export function ImgElementCreator(symbol) {
+  let imgEl = document.createElement("img");
+  imgEl.setAttribute("src", `src/svg/${symbol}.svg`);
+  imgEl.setAttribute("alt", `${symbol}`);
+  imgEl.setAttribute("draggable", "false");
+  imgEl.setAttribute("data", `${symbol}`);
+  imgEl.setAttribute("data-img", "gameBoardSquare");
+  return imgEl;
+}
 
 restartGameBtn.addEventListener("click", function () {
   newGame();
-  addMouseEnterListener();
 });
 
 const playerMove = function (event) {
@@ -122,5 +116,37 @@ export const addPlayerMove = function () {
   });
 };
 
-newGame();
-addMouseEnterListener();
+changePlayerSymbols('o');
+addPlayerMove();
+
+
+//\\//
+// Bug with move preview --fixed by handling with css instead of mouseEnter mouseLeave
+//\\//\\
+
+// // onmouseover change svg to "x" if the img is "empty.svg"
+// const addMouseEnterListener = function () {
+//   let gridSquareImgs = document.querySelectorAll('[data="empty"');
+//   gridSquareImgs.forEach(function (squareImg) {
+//     if (squareImg.alt === "empty") {
+//       squareImg.addEventListener("mouseenter", mouseEnterPreview);
+//     }
+//   });
+// };
+
+
+// export const mouseEnterPreview = function (event) {
+//   if (event.target.alt === "empty") {
+//     let hoveredSquare = event.target.parentNode.dataset.square;
+//     event.target.replaceWith(ImgElementCreator(humanPlayer.symbol));
+//     let gridSquareImgs = document.querySelectorAll(
+//       '[data-img="gameBoardSquare"'
+//     );
+//     gridSquareImgs[hoveredSquare].addEventListener("click", playerMove);
+//     gridSquareImgs[hoveredSquare].addEventListener("mouseleave", function () {
+//       gridSquareImgs[hoveredSquare].replaceWith(ImgElementCreator("empty"));
+//       addMouseEnterListener();
+//       gridSquareImgs[hoveredSquare].addEventListener("click", playerMove);
+//     });
+//   }
+// };
