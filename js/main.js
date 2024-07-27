@@ -31,6 +31,7 @@ function closeDropdown() {
 
 function closeModal() {
   modalOverlay.classList.remove("--active");
+  restartGameBtn.removeAttribute("tabindex")
 }
 
 dropdownParent.addEventListener("click", function (event) {
@@ -42,8 +43,10 @@ dropdownParent.addEventListener("click", function (event) {
     toggleDropdown();
     if (menu.classList.contains("--active")) {
       modalOverlay.classList.add("--active"); // add overlay to stop clicks on game tiles
+      restartGameBtn.setAttribute("tabindex","-1") // make restart game button un-tabbable when difficulty options are being selected
     } else {
-      closeModal();
+     closeModal();
+
     }
   }
 });
@@ -58,15 +61,6 @@ window.addEventListener("click", function (event) {
     closeModal();
   }
 });
-
-
-// //clear preview symbols periodically --bug fix
-// setInterval(() => {
-//   cells.forEach(cell => {
-//  // search for added hover state? possibly with time created
-//     }
-//   });
-// }, 500);
 
 // symbols available are x, o, empty
 export function ImgElementCreator(symbol) {
@@ -118,35 +112,3 @@ export const addPlayerMove = function () {
 
 changePlayerSymbols('o');
 addPlayerMove();
-
-
-//\\//
-// Bug with move preview --fixed by handling with css instead of mouseEnter mouseLeave
-//\\//\\
-
-// // onmouseover change svg to "x" if the img is "empty.svg"
-// const addMouseEnterListener = function () {
-//   let gridSquareImgs = document.querySelectorAll('[data="empty"');
-//   gridSquareImgs.forEach(function (squareImg) {
-//     if (squareImg.alt === "empty") {
-//       squareImg.addEventListener("mouseenter", mouseEnterPreview);
-//     }
-//   });
-// };
-
-
-// export const mouseEnterPreview = function (event) {
-//   if (event.target.alt === "empty") {
-//     let hoveredSquare = event.target.parentNode.dataset.square;
-//     event.target.replaceWith(ImgElementCreator(humanPlayer.symbol));
-//     let gridSquareImgs = document.querySelectorAll(
-//       '[data-img="gameBoardSquare"'
-//     );
-//     gridSquareImgs[hoveredSquare].addEventListener("click", playerMove);
-//     gridSquareImgs[hoveredSquare].addEventListener("mouseleave", function () {
-//       gridSquareImgs[hoveredSquare].replaceWith(ImgElementCreator("empty"));
-//       addMouseEnterListener();
-//       gridSquareImgs[hoveredSquare].addEventListener("click", playerMove);
-//     });
-//   }
-// };
