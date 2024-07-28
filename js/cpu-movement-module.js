@@ -8,9 +8,9 @@ import {
 import { ImgElementCreator } from "/js/main.js";
 
 function _evalBoard() {
-  if (checkWinner(cpuPlayer)) {
+  if (checkWinner(cpuPlayer).win) {
     return 10;
-  } else if (checkWinner(humanPlayer)) {
+  } else if (checkWinner(humanPlayer).win) {
     return -10;
   }
   return 0; //no win - tie
@@ -56,7 +56,7 @@ function _miniMax(board, depth, isMaxing) {
 }
 
 export function makeCpuMove(board) {
-  //if board is empty, make cpu choose a random square to make game more interesting/ less robotic 
+  //if board is empty, make cpu choose a random square to make game more interesting/ less robotic
   if (!board.includes("x") && !board.includes("o")) {
     let randomMoveSquare = Math.floor(Math.random() * (8 + 1));
     let squareEl = document.querySelector(
@@ -96,11 +96,20 @@ export function makeCpuMove(board) {
 
     board[bestMove] = cpuPlayer.symbol;
 
-    if (checkWinner(cpuPlayer)) {
+    //check for end of game state
+    if (checkWinner(cpuPlayer).win) {
       cpuPlayer.setScore("win");
       console.log("CPU wins!");
       cpuPlayer.turn = false;
       humanPlayer.turn = false;
+      // add --loss class so css can highlight losing combination 
+      let winSquareCombo = checkWinner(cpuPlayer).squareIndex;
+      for (let i = 0; i < 3; i++) {
+        let winningSquareEl = document.querySelector(
+          `[data-square='${winSquareCombo[i]}']`
+        );
+        winningSquareEl.classList.add("--loss");
+      }
     } else if (checkTie()) {
       console.log("It's a tie!");
       cpuPlayer.turn = false;

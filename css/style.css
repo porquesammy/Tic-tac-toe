@@ -166,6 +166,23 @@ a {
   background-image: url("../src/svg/o.svg");
 }
 
+/* test win status change svg color*/
+.gameGridContainer__square.--winner img[data=o] {
+  filter: invert(49%) sepia(78%) saturate(1000%) hue-rotate(93deg) brightness(70%) contrast(119%);
+}
+
+.gameGridContainer__square.--winner img[data=x] {
+  filter: invert(49%) sepia(78%) saturate(1000%) hue-rotate(93deg) brightness(70%) contrast(119%);
+}
+
+.gameGridContainer__square.--loss img[data=o] {
+  filter: invert(15%) sepia(99%) saturate(6973%) hue-rotate(1deg) brightness(76%) contrast(113%);
+}
+
+.gameGridContainer__square.--loss img[data=x] {
+  filter: invert(10%) sepia(84%) saturate(2650%) hue-rotate(1deg) brightness(75%) contrast(149%);
+}
+
 .gameGridContainer__square:hover {
   cursor: pointer;
   transition: 0.35s ease-in;

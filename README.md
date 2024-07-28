@@ -19,4 +19,4 @@ todo:
     
 -track and display score
 
--highlight win or loss tiles 
+-highlight win or loss tiles (completed)

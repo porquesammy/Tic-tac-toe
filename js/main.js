@@ -1,15 +1,11 @@
-import { makeCpuMove } from "/js/cpu-movement-module.js";
 import {
-  board,
-  humanPlayer,
-  cpuPlayer,
-  checkWinner,
-  checkTie,
+  playerMove,
   newGame,
 } from "/js/game-state-module.js";
-import {
-  changePlayerSymbols} from "./setTurns.js";
-
+import{
+  setTurns,
+  changePlayerSymbols,
+} from "/js/setTurns.js";
 const menu = document.querySelector("[data='options-menu']");
 const caret = document.querySelector("[data='options-caret']");
 const dropdownParent = document.querySelector("[data='difficulty-settings']");
@@ -31,7 +27,7 @@ function closeDropdown() {
 
 function closeModal() {
   modalOverlay.classList.remove("--active");
-  restartGameBtn.removeAttribute("tabindex")
+  restartGameBtn.removeAttribute("tabindex");
 }
 
 dropdownParent.addEventListener("click", function (event) {
@@ -43,10 +39,9 @@ dropdownParent.addEventListener("click", function (event) {
     toggleDropdown();
     if (menu.classList.contains("--active")) {
       modalOverlay.classList.add("--active"); // add overlay to stop clicks on game tiles
-      restartGameBtn.setAttribute("tabindex","-1") // make restart game button un-tabbable when difficulty options are being selected
+      restartGameBtn.setAttribute("tabindex", "-1"); // make restart game button un-tabbable when difficulty options are being selected
     } else {
-     closeModal();
-
+      closeModal();
     }
   }
 });
@@ -77,31 +72,6 @@ restartGameBtn.addEventListener("click", function () {
   newGame();
 });
 
-const playerMove = function (event) {
-  if (
-    humanPlayer.turn === true &&
-    board[event.target.parentNode.attributes["data-square"].value] === " "
-  ) {
-    board[event.target.parentNode.attributes[3].value] = humanPlayer.symbol;
-    event.target.replaceWith(ImgElementCreator(humanPlayer.symbol));
-    if (checkWinner(humanPlayer)) {
-      humanPlayer.setScore("win");
-      console.log("You win!");
-      humanPlayer.turn = false;
-      cpuPlayer.turn = false;
-      return;
-    } else if (checkTie()) {
-      console.log("It's a tie!");
-      humanPlayer.turn = false;
-      cpuPlayer.turn = false;
-      return;
-    }
-    humanPlayer.turn = false;
-    cpuPlayer.turn = true;
-    makeCpuMove(board);
-  }
-};
-
 // on click if the square is empty  add player.symbol to  the board array and change the image to "x"
 export const addPlayerMove = function () {
   let gridSquareImgs = document.querySelectorAll('[data="empty"');
@@ -110,5 +80,4 @@ export const addPlayerMove = function () {
   });
 };
 
-changePlayerSymbols('o');
-addPlayerMove();
+newGame()
