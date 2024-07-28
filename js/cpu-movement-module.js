@@ -1,71 +1,113 @@
 import {
-  board,
-  ImgElementCreator,
   humanPlayer,
   cpuPlayer,
   checkWinner,
   checkTie,
 } from "/js/game-state-module.js";
 
-export function makeCpuMove(difficultyDepth) {
-  let _bestScore = -Infinity;
-  let _bestMove;
-  let _squareEl;
+import { ImgElementCreator } from "/js/main.js";
 
-  for (let index = 0; index <= 8; index++) {
-    if (board[index] === " ") {
-      board[index] = cpuPlayer.symbol;
-      let _score = _minMax(board, difficultyDepth, false);
-      board[index] = " ";
-
-      if (_score > _bestScore) {
-        _bestScore = _score;
-        _bestMove = index;
-      }
-    }
+function _evalBoard() {
+  if (checkWinner(cpuPlayer)) {
+    return 10;
+  } else if (checkWinner(humanPlayer)) {
+    return -10;
   }
-
-  board[_bestMove] = cpuPlayer.symbol;
-  _squareEl = document.querySelector(`[data-square=${_bestMove}']`);
-  _squareEl.removeChild(_squareEl.querySelector("img"));
-  _squareEl.append(ImgElementCreator(`${cpuPlayer.symbol}}`));
+  return 0; //no win - tie
 }
 
-//Min-Max algorithm
-function _minMax(board, difficultyDepth, maximizingPlayer) {
-  if (difficultyDepth === 0) {
-    return 0;
-  } // <-- not sure if needs value ?
-  else if (checkWinner(humanPlayer)) {
-    return -1;
-  } else if (checkWinner(cpuPlayer)) {
-    return 1;
-  } else if (checkTie()) {
+function _miniMax(board, depth, isMaxing) {
+  let score = _evalBoard();
+  if (score === 10) {
+    return score - depth;
+  }
+  if (score === -10) {
+    return score + depth;
+  }
+  if (checkTie()) {
     return 0;
   }
 
-  if (maximizingPlayer) {
-    let _maxEval = -Infinity;
-    for (let index = 0; index <= 8; index++) {
+  if (isMaxing) {
+    let bestScore = -Infinity;
+
+    for (let index = 0; index < 9; index++) {
       if (board[index] === " ") {
-        // if open spot
-        board[index] = cpuPlayer.symbol; // place marker
-        let _eval = _minMax(board, difficultyDepth - 1, false); //maximizingPlayer = false
+        board[index] = cpuPlayer.symbol;
+        let score = _miniMax(board, depth + 1, false);
         board[index] = " ";
-        _maxEval = Math.max(_maxEval, _eval);
+        bestScore = Math.max(score, bestScore);
       }
     }
-    return _maxEval;
+    return bestScore;
   } else {
-    let _minEval = Infinity;
-    for (let index = 0; index <= 8; index++) {
+    //minimizing player
+    let bestScore = Infinity;
+    for (let index = 0; index < 9; index++) {
       if (board[index] === " ") {
         board[index] = humanPlayer.symbol;
-        let _eval = _minMax(board, difficultyDepth - 1, true); // maximizingPlayer = true
+        let score = _miniMax(board, depth + 1, true);
         board[index] = " ";
-        _minEval = Math.min(_minEval, _eval);
+        bestScore = Math.min(score, bestScore);
       }
     }
-    return _minEval;
+    return bestScore;
+  }
+}
+
+export function makeCpuMove(board) {
+  //if board is empty, make cpu choose a random square to make game more interesting/ less robotic 
+  if (!board.includes("x") && !board.includes("o")) {
+    let randomMoveSquare = Math.floor(Math.random() * (8 + 1));
+    let squareEl = document.querySelector(
+      `[data-square='${randomMoveSquare}']`
+    );
+    board[randomMoveSquare] = cpuPlayer.symbol;
+    //setting a slight timeout to make it look more natural and hint to user that it is their turn
+    setTimeout(() => {
+      squareEl.replaceChild(
+        ImgElementCreator(cpuPlayer.symbol),
+        squareEl.children[0]
+      );
+      cpuPlayer.turn = false;
+      humanPlayer.turn = true;
+    }, 200);
+  } else {
+    let bestScore = -Infinity;
+    let bestMove = undefined;
+
+    for (let index = 0; index < 9; index++) {
+      if (board[index] === " ") {
+        board[index] = cpuPlayer.symbol;
+        let moveEval = _miniMax(board, 0, false);
+        board[index] = " ";
+        if (moveEval > bestScore) {
+          bestScore = moveEval;
+          bestMove = index;
+        }
+      }
+    }
+
+    let squareEl = document.querySelector(`[data-square='${bestMove}']`);
+    squareEl.replaceChild(
+      ImgElementCreator(cpuPlayer.symbol),
+      squareEl.children[0]
+    );
+
+    board[bestMove] = cpuPlayer.symbol;
+
+    if (checkWinner(cpuPlayer)) {
+      cpuPlayer.setScore("win");
+      console.log("CPU wins!");
+      cpuPlayer.turn = false;
+      humanPlayer.turn = false;
+    } else if (checkTie()) {
+      console.log("It's a tie!");
+      cpuPlayer.turn = false;
+      humanPlayer.turn = false;
+    } else {
+      cpuPlayer.turn = false;
+      humanPlayer.turn = true;
+    }
   }
 }
