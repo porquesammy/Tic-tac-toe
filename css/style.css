@@ -166,7 +166,6 @@ a {
   background-image: url("../src/svg/o.svg");
 }
 
-/* test win status change svg color*/
 .gameGridContainer__square.--winner img[data=o] {
   filter: invert(49%) sepia(78%) saturate(1000%) hue-rotate(93deg) brightness(70%) contrast(119%);
 }

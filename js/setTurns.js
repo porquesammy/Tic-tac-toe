@@ -22,7 +22,6 @@ export const setTurns = function () {
     document
       .querySelector(".gameGridContainer")
       .classList.add("--humanPlayerSymbol-x");
-    console.log("uhh");
   } else if (humanPlayer.symbol === "o") {
     humanPlayer.turn = false;
     cpuPlayer.turn = true;
@@ -36,7 +35,6 @@ export const setTurns = function () {
     document
       .querySelector(".gameGridContainer")
       .classList.add("--humanPlayerSymbol-o");
-    console.log("wtf");
     //make cpu move first if cpuSymbol is 'x'
     makeCpuMove(board);
   } else {

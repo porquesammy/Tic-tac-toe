@@ -20,3 +20,5 @@ todo:
 -track and display score
 
 -highlight win or loss tiles (completed)
+
+-turn off player preview when game has ended (win/loss)

@@ -20,8 +20,8 @@ Player.prototype.setScore = function (outcome) {
   } else return this.score;
 };
 
-export const humanPlayer = new Player("You", "o");
-export const cpuPlayer = new Player("CPU", "x");
+export const humanPlayer = new Player("You", "x");
+export const cpuPlayer = new Player("CPU", "o");
 
 export const playerMove = function (event) {
   if (

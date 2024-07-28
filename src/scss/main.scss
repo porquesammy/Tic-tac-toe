@@ -171,35 +171,30 @@ a {
   background-image: url("../src/svg/o.svg");
 }
 
-/* test win status change svg color*/
-//add .--winner class to squares using js
-//would have to change if player was x symbol
 
-// test winner userPlayer.symbol = "o"
+// winner userPlayer.symbol = "o"
 
 .gameGridContainer__square.--winner img[data="o"] {
   filter: invert(49%) sepia(78%) saturate(1000%) hue-rotate(93deg)
     brightness(70%) contrast(119%);
 }
 
-// test winner userPlayer.symbol = "x"
+// winner userPlayer.symbol = "x"
 .gameGridContainer__square.--winner img[data="x"] {
   filter: invert(49%) sepia(78%) saturate(1000%) hue-rotate(93deg)
     brightness(70%) contrast(119%);
 }
 
-// test loser cpuPlayer.symbol = "o"
+// loser cpuPlayer.symbol = "o"
 .gameGridContainer__square.--loss img[data="o"] {
   filter: invert(15%) sepia(99%) saturate(6973%) hue-rotate(1deg) brightness(76%) contrast(113%);
 
 }
-//test loser cpuPlayer.symbol = "x"
+//loser cpuPlayer.symbol = "x"
 .gameGridContainer__square.--loss img[data="x"] {
   filter: invert(10%) sepia(84%) saturate(2650%) hue-rotate(1deg)
     brightness(75%) contrast(149%);
 }
-
-// ----//
 
 .gameGridContainer__square:hover {
   cursor: pointer;
