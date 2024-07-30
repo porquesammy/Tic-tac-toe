@@ -17,7 +17,7 @@ todo:
 
     --(leaving the player preview symbol if mouse-exit is too quick)
     
--track and display score
+-track and display score (completed)
 
 -highlight win or loss tiles (completed)
 

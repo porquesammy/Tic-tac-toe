@@ -1,45 +1,39 @@
-import {
-  playerMove,
-  newGame,
-} from "/js/game-state-module.js";
-import{
-  setTurns,
-  changePlayerSymbols,
-} from "/js/setTurns.js";
-const menu = document.querySelector("[data='options-menu']");
-const caret = document.querySelector("[data='options-caret']");
-const dropdownParent = document.querySelector("[data='difficulty-settings']");
-const dropdown = document.querySelector("[data='options-select']");
-const dropdownAnchor = document.querySelector("[data='options-select'] a");
-const modalOverlay = document.querySelector("[data='modal-overlay']");
-const restartGameBtn = document.querySelector("[data='restart-btn']");
+import { playerMove, newGame } from "/js/game-state-module.js";
+
+const _menu = document.querySelector("[data='options-menu']");
+const _caret = document.querySelector("[data='options-caret']");
+const _dropdownParent = document.querySelector("[data='difficulty-settings']");
+const _dropdown = document.querySelector("[data='options-select']");
+const _dropdownAnchor = document.querySelector("[data='options-select'] a");
+const _modalOverlay = document.querySelector("[data='modal-overlay']");
+const _restartGameBtn = document.querySelector("[data='restart-btn']");
 
 // dropdown difficulty menu
 function toggleDropdown() {
-  menu.classList.toggle("--active");
-  caret.classList.toggle("--rotate");
+  _menu.classList.toggle("--active");
+  _caret.classList.toggle("--rotate");
 }
 
 function closeDropdown() {
-  menu.classList.remove("--active");
-  caret.classList.toggle("--rotate");
+  _menu.classList.remove("--active");
+  _caret.classList.toggle("--rotate");
 }
 
 function closeModal() {
-  modalOverlay.classList.remove("--active");
-  restartGameBtn.removeAttribute("tabindex");
+  _modalOverlay.classList.remove("--active");
+  _restartGameBtn.removeAttribute("tabindex");
 }
 
-dropdownParent.addEventListener("click", function (event) {
+_dropdownParent.addEventListener("click", function (event) {
   if (
-    event.target === dropdown ||
-    event.target === dropdownAnchor ||
-    event.target === caret
+    event.target === _dropdown ||
+    event.target === _dropdownAnchor ||
+    event.target === _caret
   ) {
     toggleDropdown();
-    if (menu.classList.contains("--active")) {
-      modalOverlay.classList.add("--active"); // add overlay to stop clicks on game tiles
-      restartGameBtn.setAttribute("tabindex", "-1"); // make restart game button un-tabbable when difficulty options are being selected
+    if (_menu.classList.contains("--active")) {
+      _modalOverlay.classList.add("--active"); // add overlay to stop clicks on game tiles
+      _restartGameBtn.setAttribute("tabindex", "-1"); // make restart game button un-tabbable when options are being selected
     } else {
       closeModal();
     }
@@ -49,8 +43,8 @@ dropdownParent.addEventListener("click", function (event) {
 // Close the dropdown when clicking outside of it
 window.addEventListener("click", function (event) {
   if (
-    modalOverlay.contains(event.target) &&
-    menu.classList.contains("--active")
+    _modalOverlay.contains(event.target) &&
+    _menu.classList.contains("--active")
   ) {
     closeDropdown();
     closeModal();
@@ -59,25 +53,26 @@ window.addEventListener("click", function (event) {
 
 // symbols available are x, o, empty
 export function ImgElementCreator(symbol) {
-  let imgEl = document.createElement("img");
-  imgEl.setAttribute("src", `src/svg/${symbol}.svg`);
-  imgEl.setAttribute("alt", `${symbol}`);
-  imgEl.setAttribute("draggable", "false");
-  imgEl.setAttribute("data", `${symbol}`);
-  imgEl.setAttribute("data-img", "gameBoardSquare");
-  return imgEl;
+  let _imgEl = document.createElement("img");
+  _imgEl.setAttribute("src", `src/svg/${symbol}.svg`);
+  _imgEl.setAttribute("alt", `${symbol}`);
+  _imgEl.setAttribute("draggable", "false");
+  _imgEl.setAttribute("data", `${symbol}`);
+  _imgEl.setAttribute("data-img", "gameBoardSquare");
+  return _imgEl;
 }
 
-restartGameBtn.addEventListener("click", function () {
+
+_restartGameBtn.addEventListener("click", function () {
   newGame();
 });
 
 // on click if the square is empty  add player.symbol to  the board array and change the image to "x"
 export const addPlayerMove = function () {
-  let gridSquareImgs = document.querySelectorAll('[data="empty"');
-  gridSquareImgs.forEach(function (squareImg) {
+  let _gridSquareImgs = document.querySelectorAll('[data="empty"');
+  _gridSquareImgs.forEach(function (squareImg) {
     squareImg.addEventListener("click", playerMove);
   });
 };
 
-newGame()
+newGame();

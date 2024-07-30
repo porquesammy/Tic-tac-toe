@@ -18,15 +18,14 @@
             class="options__select"
             data="options-select"
             data-option="impossible"
-            data-selected="true"
           >
             <a
               href="#"
               data-option="impossible"
-              data-selected="true"
-              aria-selected="true"
+              data-selected="false"
+              aria-selected="false"
               draggable="false"
-              >Impossible</a
+              >Options</a
             >
             <div class="options__caret" data="options-caret"></div>
           </div>
@@ -51,13 +50,39 @@
                 >Hard</a
               >
             </li>
+            <li>
+              <a
+                href="#"
+                data-option="Impossible"
+                data-selected="true"
+                aria-selected="true"
+                draggable="false"
+                >Impossible</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                data-option="play-as-o"
+                data-selected="true"
+                aria-selected="true"
+                draggable="false"
+                >play as: O</a
+              >
+              <li>
+                <a
+                  href="#"
+                  data-option="play-as-x"
+                  data-selected="false"
+                  aria-selected="false"
+                  draggable="false"d
+                  >play as: X</a
+                >
+              </li>
+            </li>
           </ul>
         </ul>
       </div>
-    </div>
-    <div class="score-wrapper">
-      <div class="score-wrapper__x-score">X: <span data-x-score>0</span></div>
-      <div class="score-wrapper__o-score">O: <span data-o-score>0</span></div>
     </div>
     <div
       class="gameGridContainer --humanPlayerSymbol-x"
@@ -199,8 +224,13 @@
         />
       </div>
     </div>
+    
     <div class="restart-game">
       <button class="restart-game__btn" data="restart-btn">Restart Game</button>
+    </div>
+    <div class="score-wrapper">
+      <div class="score-wrapper__wins"><span data-x-score>0</span></div>
+      <div class="score-wrapper__losses"><span data-o-score>0</span></div>
     </div>
   </body>
 </html>

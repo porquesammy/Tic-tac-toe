@@ -35,13 +35,17 @@ export const playerMove = function (event) {
       console.log("You win!");
       humanPlayer.turn = false;
       cpuPlayer.turn = false;
-      let winSquareCombo = checkWinner(humanPlayer).squareIndex;
+      const _winSquareCombo = checkWinner(humanPlayer).squareIndex;
       for (let i = 0; i < 3; i++) {
-        let winningSquareEl = document.querySelector(
-          `[data-square='${winSquareCombo[i]}']`
+        const _winningSquareEl = document.querySelector(
+          `[data-square='${_winSquareCombo[i]}']`
         );
-        winningSquareEl.classList.add("--winner");
+        _winningSquareEl.classList.add("--winner");
       }
+
+      //update scoreboard
+      const _winsScoreSpan = document.querySelector('.score-wrapper__wins span')
+      _winsScoreSpan.firstChild.data = humanPlayer.score;
       return;
     } else if (checkTie()) {
       console.log("It's a tie!");

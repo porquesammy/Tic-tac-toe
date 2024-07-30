@@ -4,8 +4,8 @@
   font-weight: 400;
   font-display: swap;
   src: local("Coiny"),
-    url("src/fonts/coiny-regular-webfont.woff") format("woff"),
-    url("src/fonts/coiny-regular-webfont.woff2") format("woff2");
+    url("../src/fonts/coiny-regular-webfont.woff") format("woff"),
+    url("../src/fonts/coiny-regular-webfont.woff2") format("woff2");
 }
 
 :root {
@@ -58,7 +58,7 @@ body {
   color: rgb(214, 214, 214);
   display: flex;
   align-items: center;
-  padding: 0.5rem 1.75rem;
+  padding: 0.5rem 0.75rem;
   background-color: rgb(51, 65, 85);
   cursor: pointer;
   transition: background-color 0.3s;
@@ -68,6 +68,12 @@ body {
 
 .options__select:hover {
   background-color: rgb(52, 71, 90);
+}
+
+[data-selected="true"]{    
+color:rgba(173, 192, 205, 0.533);
+font-size: 105%;
+
 }
 
 .options__caret {
@@ -127,19 +133,22 @@ a {
   margin-bottom: 1rem;
   text-align: center;
   font-size: 1.5rem;
-  & span {
-    padding-left: 18px;
-  }
-  & .score-wrapper__x-score {
-    margin-right: 1rem;
-  }
-  & .score-wrapper__x-score,
-  .score-wrapper__o-score {
+  background-color: #334155;
+  border-radius: 10px;
+  & .score-wrapper__wins,
+  .score-wrapper__losses {
     color: rgb(214, 214, 214);
-    padding: 0.3rem;
-    background-color: rgb(51, 65, 85);
     flex: 1 1 auto;
     user-select: none;
+    border-radius: 5px;
+  }
+  & .score-wrapper__wins {
+    background-color: rgba(0, 128, 0, 0.533);
+    border-radius: 5px 0 0 5px;
+  }
+  & .score-wrapper__losses {
+    background-color: #d20f0f;
+    border-radius: 0 5px 5px 0;
   }
 }
 
@@ -162,6 +171,18 @@ a {
   user-select: none;
 }
 
+@keyframes winLossBlink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 /* if humanPlayer.symbol is "x" */
 .--humanPlayerSymbol-x .gameGridContainer__square img[data="empty"]:hover {
   background-image: url("../src/svg/x.svg");
@@ -171,29 +192,32 @@ a {
   background-image: url("../src/svg/o.svg");
 }
 
-
 // winner userPlayer.symbol = "o"
 
 .gameGridContainer__square.--winner img[data="o"] {
-  filter: invert(49%) sepia(78%) saturate(1000%) hue-rotate(93deg)
-    brightness(70%) contrast(119%);
+  animation: winLossBlink 1s 3;
+  filter: brightness(0) saturate(100%) invert(22%) sepia(63%) saturate(1055%)
+    hue-rotate(87deg) brightness(87%) contrast(92%);
 }
 
 // winner userPlayer.symbol = "x"
 .gameGridContainer__square.--winner img[data="x"] {
-  filter: invert(49%) sepia(78%) saturate(1000%) hue-rotate(93deg)
-    brightness(70%) contrast(119%);
+  animation: winLossBlink 1s 3;
+  filter: brightness(0) saturate(100%) invert(22%) sepia(63%) saturate(1055%)
+    hue-rotate(87deg) brightness(87%) contrast(92%);
 }
 
 // loser cpuPlayer.symbol = "o"
 .gameGridContainer__square.--loss img[data="o"] {
-  filter: invert(15%) sepia(99%) saturate(6973%) hue-rotate(1deg) brightness(76%) contrast(113%);
-
+  animation: winLossBlink 1s 3;
+  filter: brightness(0) saturate(100%) invert(22%) sepia(100%) saturate(2593%)
+    hue-rotate(348deg) brightness(78%) contrast(115%);
 }
 //loser cpuPlayer.symbol = "x"
 .gameGridContainer__square.--loss img[data="x"] {
-  filter: invert(10%) sepia(84%) saturate(2650%) hue-rotate(1deg)
-    brightness(75%) contrast(149%);
+  animation: winLossBlink 1s 3;
+  filter: brightness(0) saturate(100%) invert(22%) sepia(100%) saturate(2593%)
+    hue-rotate(348deg) brightness(78%) contrast(115%);
 }
 
 .gameGridContainer__square:hover {

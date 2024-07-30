@@ -110,6 +110,9 @@ export function makeCpuMove(board) {
         );
         winningSquareEl.classList.add("--loss");
       }
+      //update scoreboard
+      const _lossesScoreSpan = document.querySelector('.score-wrapper__losses span')
+      _lossesScoreSpan.firstChild.data = cpuPlayer.score;
     } else if (checkTie()) {
       console.log("It's a tie!");
       cpuPlayer.turn = false;
